@@ -1,13 +1,11 @@
 This is a simple Rust program to see if we can't get threads working with the
 
 `wasm32-unknown-emscripten` compiler target.  This is currently failing with an
-error from `wasm-ld` complaining about:
-
-    wasm-ld: error: /home/greg/rust-examples/threads/target/wasm32-unknown-emscripten/release/deps/libstd-c3ef1d33e4a2152f.rlib(std-c3ef1d33e4a2152f.std.ac802b8c-cgu.13.rcgu.o): relocation R_WASM_MEMORY_ADDR_TLS_SLEB cannot be used against non-TLS symbol `std::io::stdio::OUTPUT_CAPTURE::__getit::__KEY::h776cf75763f0fad1`
-
-...this is the same error message with emscripten 2.0.34 and 3.0.0.  In order
-to get this far, I've used a nightly Rust build to enable recompliation of
-`std` with `target-feature=+atomics,+bulk-memory`.  The cargo invocation is:
+error from `wasm-ld` complaining about `relocation R_WASM_MEMORY_ADDR_TLS_SLEB cannot be used against non-TLS symbol 'std::io::stdio::OUTPUT_CAPTURE::__getit::__KEY::h776cf75763f0fad1'`
+being the interesting part.  This is the same error message with emscripten
+2.0.34 and 3.0.0.  In order to get this far, I've used a nightly Rust build to
+enable recompliation of `std` with `target-feature=+atomics,+bulk-memory`.  The
+cargo invocation is:
 
     cargo build --target=wasm32-unknown-emscripten --release -Z build-std=panic_abort,std
 
