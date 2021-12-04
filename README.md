@@ -70,6 +70,9 @@ Maybe there needs to be one for wasm and atomics?  Issue #84224 might be related
 
     https://github.com/rust-lang/rust/issues/84224
 
+Thread local storage apprears to work out-of-the-box with Emscripten, as shown
+by the program in `src/c_example`.
+
 I would appreciate any pointers to more information about this issue, or a more
 appropriate forum for this question.  
 
