@@ -1,4 +1,4 @@
-#Thread Local Storage & wasm-ld -- thread_local! and Emscripten 
+# Thread Local Storage & wasm-ld -- thread_local! and Emscripten 
 
 I've been investigating what it might take to get Rust to compile a threaded
 program against the `wasm32-unknown-emscripten` compiler target.  The simple example in `src/main.rs`:
@@ -20,7 +20,7 @@ program against the `wasm32-unknown-emscripten` compiler target.  The simple exa
 ...works when compiling for an x86_64 target, but for
 `--target=wasm32-unknown-emscripten` fails with with an error from `wasm-ld`
 complaining about `relocation R_WASM_MEMORY_ADDR_TLS_SLEB cannot be used against non-TLS symbol 'std::io::stdio::OUTPUT_CAPTURE::__getit::__KEY::h776cf75763f0fad1'`, and
-`relocation R_WASM_MEMORY_ADDR_TLS_SLEB cannot be used against non-TLS symbol 'std::sys_common::thread_info::THREAD_INFO::__getit::STATE::haca3e53312905f45 (.0.0.llvm.16251061034901608940)'`
+`relocation R_WASM_MEMORY_ADDR_TLS_SLEB cannot be used against non-TLS symbol 'std::sys_common::thread_info::THREAD_INFO::__getit::STATE::haca3e53312905f45'`.  (full error message in `error.txt`)
 
 ...as near as I can tell, `std::io::stdio::OUTPUT_CAPTURE` is [wrapped
 in](https://github.com/rust-lang/rust/blob/master/library/std/src/io/stdio.rs)
