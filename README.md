@@ -20,7 +20,7 @@ program against the `wasm32-unknown-emscripten` compiler target.  The simple exa
 ...works when compiling for an x86_64 target, but for
 `--target=wasm32-unknown-emscripten` fails with with an error from `wasm-ld`
 complaining about `relocation R_WASM_MEMORY_ADDR_TLS_SLEB cannot be used against non-TLS symbol 'std::io::stdio::OUTPUT_CAPTURE::__getit::__KEY::h776cf75763f0fad1'`, and
-`relocation R_WASM_MEMORY_ADDR_TLS_SLEB cannot be used against non-TLS symbol 'std::sys_common::thread_info::THREAD_INFO::__getit::STATE::haca3e53312905f45'`.  (full error message in `error.txt`)
+`relocation R_WASM_MEMORY_ADDR_TLS_SLEB cannot be used against non-TLS symbol 'std::sys_common::thread_info::THREAD_INFO::__getit::STATE::haca3e53312905f45'`.  (full error message in [error.txt](https://github.com/gregbuchholz/threads/blob/main/error.txt))
 
 ...as near as I can tell, `std::io::stdio::OUTPUT_CAPTURE` is [wrapped
 in](https://github.com/rust-lang/rust/blob/master/library/std/src/io/stdio.rs)
@@ -76,6 +76,8 @@ by [this C program](https://github.com/gregbuchholz/threads/tree/main/src/c_exam
 Issue #84224 might be related:
 
     https://github.com/rust-lang/rust/issues/84224
+
+I'm not sure where to look to see how `#[thread_local]` is defined.
 
 I would appreciate any pointers to more information about this issue, or a more
 appropriate forum for this question.  
