@@ -3,22 +3,22 @@
 #include <unistd.h>  
 #include <threads.h>
   
-thread_local int tls = 1;
+thread_local int variable1 = 1;
 
 void *test(void *id)
 {
     sleep(1);
-    printf("in thread tls: %d\n",tls);
+    printf("in thread, variable1: %d\n",variable1);
     thrd_exit(EXIT_SUCCESS);
 }
    
 int main()
 {
     thrd_t thread_id;
-    printf("main tls before: %d\n",tls);
+    printf("main, variable1 before: %d\n",variable1);
     thrd_create(&thread_id,(thrd_start_t)test,NULL);
-    tls = 2;
-    printf("main tls after: %d\n",tls);
+    variable1 += 1;
+    printf("main, variable1 after: %d\n",variable1);
     thrd_join(thread_id,NULL);
 
     return EXIT_SUCCESS;

@@ -10,7 +10,7 @@ or
 
 node --experimental-wasm-threads --experimental-wasm-bulk-memory a.out.js
 
-You can also compile with gcc:
+You can also compile with gcc to confirm a working native program:
 
 gcc example.c -lpthread
 
