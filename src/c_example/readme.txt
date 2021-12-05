@@ -1,4 +1,4 @@
-compile and then run with either:
+compile with "compile_command.sh" and then run with either:
 
 emrun index-asmjs.html
 
