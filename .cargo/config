@@ -6,3 +6,8 @@ rustflags = [
     "-C", "link-args=src/gxx_personality_v0_stub.o -pthread -s PROXY_TO_PTHREAD"
 ]
 
+[target.asmjs-unknown-emscripten]
+rustflags = [
+    "-C", "target-feature=+atomics,+bulk-memory", 
+    "-C", "link-args=src/gxx_personality_v0_stub.o -pthread -s PROXY_TO_PTHREAD"
+]

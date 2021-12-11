@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>  
 #include <threads.h>
+#include <stdatomic.h>
   
 thread_local int tls = 1;
 
