@@ -5,7 +5,7 @@ As of January 29th, 2022, install/compile the llvm in git with `emsdk install ll
 
 First head over to `src/` and build:
 
-    em++ -c gxx_personality_v0_stub.cpp -pthread
+    emcc -c gxx_personality_v0_stub.cpp -pthread
 
 You can now compile with:
 
