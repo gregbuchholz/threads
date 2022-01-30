@@ -1,5 +1,23 @@
 # Thread Local Storage, wasm-ld, thread_local!, and Emscripten 
 
+This issue has been successfully resolved with the fix outlined in [emscripten issue #15891](https://github.com/emscripten-core/emscripten/issues/15891).
+As of January 29th, 2022, install/compile the llvm in git with `emsdk install llvm-git-main-64bit` and friends.
+
+You can now compile with:
+
+    cargo +nightly build --target=wasm32-unknown-emscripten --release -Z build-std=panic_abort,std
+
+...and run the example in a browser with:
+
+    emrun index-wasm.html
+
+...or run with node like:
+
+    node --experimental-wasm-threads --experimental-wasm-bulk-memory target/wasm32-unknown-emscripten/release/deps/threads.js
+
+Happy multi-threading!
+<details><summary>outdated problem summary</summary>
+
 I've been investigating what it might take to get Rust to compile a threaded
 program against the `wasm32-unknown-emscripten` compiler target.  The simple example in [src/main.rs](https://github.com/gregbuchholz/threads/blob/main/src/main.rs):
 
@@ -117,4 +135,4 @@ appropriate forum for this question.
 
 Thanks!
 
-
+</details>
