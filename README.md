@@ -3,6 +3,10 @@
 This issue has been successfully resolved with the fix outlined in [emscripten issue #15891](https://github.com/emscripten-core/emscripten/issues/15891).
 As of January 29th, 2022, install/compile the llvm in git with `emsdk install llvm-git-main-64bit` and friends.
 
+First head over to `src/` and build:
+
+    em++ -c gxx_personality_v0_stub.cpp -pthread
+
 You can now compile with:
 
     cargo +nightly build --target=wasm32-unknown-emscripten --release -Z build-std=panic_abort,std
